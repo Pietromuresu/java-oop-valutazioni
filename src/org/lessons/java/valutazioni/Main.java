@@ -50,21 +50,47 @@ public class Main {
 				}
 			}
 			
+			int idStudentePeggiore = 0;
+			float votoStudentePeggiore = 5f;
+			int idStudenteMigliore = 0;
+			float votoStudenteMigliore = 0f;
+			
 			// Stampo il totale dei promossi
 			System.out.println("Totale promossi: " + totPromossi);
 			
+			System.out.println("--------------------------------------");
+			
 			// stampo gli id degli studenti promossi e bocciati
+			
 			System.out.println("\n Promossi ids: ");
-			for(int i = 0; i<promossi.length; i++) {
-				System.out.println(promossi[i].id);
+			for(int i = 0; i < promossi.length; i++) {
+			// Controllo che lo studente tra i promossi ad indice `i` abbia il voto migliore di quello precedente 
+			// se dovesse risultare vero lo studenteMiglore diventa quello in questione
+				if(promossi[i].avgVoti > votoStudenteMigliore) {
+					votoStudenteMigliore = promossi[i].avgVoti;
+					idStudenteMigliore = promossi[i].id;
+				}
+				
+				System.out.print(promossi[i].id + ", ");
 			}
+			
+			// Faccio la stessa cosa che ho fatto per i promossi però in questo caso cerco lo studente con il voto più basso 
 			System.out.println("\n Bocciati ids: ");
-			for(int i = 0; i<bocciati.length; i++) {
-				System.out.println(bocciati[i].id);
+			for(int i = 0; i < bocciati.length; i++) {
+				
+				if(bocciati[i].avgVoti < votoStudentePeggiore) {
+					votoStudentePeggiore = bocciati[i].avgVoti;
+					idStudentePeggiore = bocciati[i].id;
+				}
+				System.out.print(bocciati[i].id + ", ");
 			}
 			
+			System.out.println("\n--------------------------------------");
+			System.out.print("\n Miglior Studente: " + idStudenteMigliore);
+			System.out.print("\n Peggior Studente: " + idStudentePeggiore);
 			
-		
+			
+			
 		
 		
 		
